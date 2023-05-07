@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Bond Analytics API
+  version: 1.0.0
+components:
+  schemas:
+    Bond:
+      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/fixed-income/v1/schemas.yaml#/components/schemas/bond'
+    YieldCurve:
+      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/fixed-income/v1/schemas.yaml#/components/schemas/yield_curve'
+    BadRequest:
+      $ref:  'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/BadRequest'
+    Unauthorized:
+      $ref:  'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/Unauthorized'
+    Forbidden:
+      $ref:   'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/Forbidden'
+    NotFound:
+      $ref:  'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/NotFound'
+    ServerError:
+      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/ServerError'
+    Header:
+      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/header'
+paths:
+  /bonds/{id}:
+    get:
+      summary: Get bond details by ID
+      parameters:
+        - name: id
+          in: path
+          description: The unique identifier for the bond
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Bond'
+        '400':
+          description: Invalid or malformed request
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/BadRequest'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/Unauthorized'
+        '403':
+          description: Forbidden request
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/Forbidden'
+        '404':
+          description: Bond not found
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/NotFound'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/ServerError'
+  /yield_curves/{id}:
+    get:
+      summary: Get yield curve details by ID
+      parameters:
+        - name: id
+          in: path
+          description: The unique identifier for the yield curve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/YieldCurve'
+        '400':
+          description: Invalid or malformed request
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/BadRequest'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref:  '#/components/schemas/Unauthorized'
+        '403':
+          description: Forbidden request
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/Forbidden'
+        '404':
+          description: Yield curve not found
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/NotFound'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                      $ref:  '#/components/schemas/ServerError'

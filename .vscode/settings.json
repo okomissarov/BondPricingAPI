@@ -1,0 +1,6 @@
+{
+    "openapi.approvedHostnames": [
+        "raw.githubusercontent.com"
+    ],
+    "openapi.dataDictionaryPreAuditFix": "always"
+}
