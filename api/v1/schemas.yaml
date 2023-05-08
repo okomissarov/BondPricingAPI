@@ -2,13 +2,13 @@ openapi: 3.0.0
 info:
   title: Bond Analytics API
   version: 1.0.0
-  
+
 components:
   schemas:
     Bond:
       $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/fixed-income/v1/schemas.yaml#/components/schemas/bond'
     YieldCurve:
-      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/fixed-income/v1/schemas.yaml#/components/schemas/yield_curve'
+      $ref: 'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/fixed-income/v1/schemas.yaml#/components/schemas/yieldCurve'
     BadRequest:
       $ref:  'https://raw.githubusercontent.com/okomissarov/OpenApiDomains/master/api/common/v1/schemas.yaml#/components/schemas/BadRequest'
     Unauthorized:
